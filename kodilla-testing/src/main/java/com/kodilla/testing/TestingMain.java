@@ -16,6 +16,7 @@ public class TestingMain {
         }
 
         Calculator calculator = new Calculator();
+
         int addResult = calculator.addAToB(2,7);
         int substractResult = calculator.substractBFromA(9,5);
 
