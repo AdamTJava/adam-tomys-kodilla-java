@@ -17,13 +17,7 @@ public class TestingMain {
 
         Calculator calculator = new Calculator();
 
-        if (calculator.addAToB(2,7) == 9) {
-            System.out.println("test OK");
-        }else {
-            System.out.println("Error");
-        }
-
-        if (calculator.substractBFromA(9,5) == 4) {
+        if (calculator.addAToB(2,7) == 9 && calculator.substractBFromA(9,5) == 4) {
             System.out.println("test OK");
         }else {
             System.out.println("Error");
