@@ -16,9 +16,11 @@ public class TestingMain {
         }
 
         Calculator calculator = new Calculator();
+        int addResult = calculator.addAToB(2,7);
+        int substractResult = calculator.substractBFromA(9,5);
 
-        if (calculator.addAToB(2,7) == 9 && calculator.substractBFromA(9,5) == 4) {
-            System.out.println("test OK");
+        if (addResult == 9 && substractResult == 4) {
+            System.out.println("Test OK");
         }else {
             System.out.println("Error");
         }
