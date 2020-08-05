@@ -3,6 +3,7 @@ package com.kodilla.testing.collection;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CollectionTestSuite {
@@ -47,25 +48,16 @@ public class CollectionTestSuite {
     public void testOddNumbersExterminatorNormalList() {
         //Given
         List<Integer> numbersList = new ArrayList<>();
-        numbersList.add(1);
-        numbersList.add(2);
-        numbersList.add(3);
-        numbersList.add(4);
-        numbersList.add(5);
-        numbersList.add(6);
-        numbersList.add(7);
-        numbersList.add(8);
-        numbersList.add(9);
+        for (int k = 1; k < 10; k++) {
+            numbersList.add(k);
+        }
+        List<Integer> numberListAfterExtermination = Arrays.asList(2,4,6,8);
         //When
-        System.out.println("Extermination method receives list with 1-9 numbers and should return only 2, 4, 6, 8.");
+        System.out.println("Extermination method receives list with numbers: "+numbersList+". Should return only 2, 4, 6, 8.");
         OddNumbersExtermination object = new OddNumbersExtermination();
         object.exterminate(numbersList);
         //Then
-        Assertions.assertFalse(numbersList.contains(1));
-        Assertions.assertFalse(numbersList.contains(3));
-        Assertions.assertFalse(numbersList.contains(5));
-        Assertions.assertFalse(numbersList.contains(7));
-        Assertions.assertFalse(numbersList.contains(9));
+        Assertions.assertEquals(numberListAfterExtermination, numbersList);
     }
 
 }

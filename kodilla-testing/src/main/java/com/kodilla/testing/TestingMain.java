@@ -3,6 +3,7 @@ package com.kodilla.testing;
 import com.kodilla.testing.collection.OddNumbersExtermination;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -19,5 +20,6 @@ public class TestingMain {
 
         //OddNumbersExtermination object = new OddNumbersExtermination();
         //object.exterminate(numbersList);
+
     }
 }
