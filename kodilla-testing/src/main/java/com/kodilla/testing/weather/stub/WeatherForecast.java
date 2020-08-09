@@ -13,7 +13,7 @@ public class WeatherForecast {
     public Map<String, Double> calculateForecast() {
         Map<String, Double> resultMap = new HashMap<>();
         for (Map.Entry<String, Double> temperature : temperatures.getTemperatures().entrySet()) {
-            resultMap.put(temperature.getKey(), temperature.getValue()+1);
+            resultMap.put(temperature.getKey(), temperature.getValue() + 1);
         }
         return resultMap;
     }
@@ -38,10 +38,10 @@ public class WeatherForecast {
         if (tempList.size() % 2 == 0) {
                 double value1 = tempList.get(tempList.size() / 2 - 1);
                 double value2 = tempList.get(tempList.size() / 2);
-                double middleValue = (value1 + value2)/2;
+                double middleValue = (value1 + value2) / 2;
                 return middleValue;
             }else {
-            value = tempList.get(tempList.size()/2);
+            value = tempList.get(tempList.size() / 2);
         }
         return value;
     }
