@@ -8,11 +8,6 @@ public class ForumStatistics {
     private double averagePostPerUser;
     private double averageCommentsPerUser;
     private double averageCommentsPerPost;
-    private Statistics statistics;
-
-    public ForumStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
 
     public void calculateAdvStatistics(Statistics statistics) {
         setUserQuantity(statistics.usersNames().size());
@@ -21,13 +16,6 @@ public class ForumStatistics {
         System.out.println("Calculating average of posts per one user ...");
         if (userQuantity != 0 && postQuantity != 0) {
             setAveragePostPerUser(postQuantity / userQuantity);
-        }else {
-            if (userQuantity == 0) {
-                System.out.println("There are no any users!");
-            }
-            if (postQuantity == 0) {
-                System.out.println("There are no any posts!");
-            }
         }
         System.out.println("Calculating average of comments per one user ...");
         if (userQuantity != 0 && commentsQuantity != 0) {
