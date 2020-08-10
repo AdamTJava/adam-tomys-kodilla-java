@@ -66,7 +66,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIfNoAnyPosts() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = generateUsers(50);
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(0);
@@ -88,7 +88,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIf100Posts() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = generateUsers(50);
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(generatePosts(1000));
@@ -110,7 +110,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIfNoComments() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = generateUsers(50);
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(generatePosts(1000));
@@ -132,7 +132,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIfLessCommentsThanPosts() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = generateUsers(50);
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(generatePosts(1000));
@@ -154,7 +154,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIfMoreCommentsThanPosts() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = generateUsers(50);
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(generatePosts(500));
@@ -165,8 +165,6 @@ public class ForumStatisticsTestSuite {
             forumStatistics.showStatistics();
 
             //Then
-            Assertions.assertEquals(50, forumStatistics.getUserQuantity());
-            Assertions.assertEquals(500, forumStatistics.getPostQuantity());
             Assertions.assertEquals(700, forumStatistics.getCommentsQuantity());
             Assertions.assertEquals(10, forumStatistics.getAveragePostPerUser());
             Assertions.assertEquals(14, forumStatistics.getAverageCommentsPerUser());
@@ -176,7 +174,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIfNoAnyUsers() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = new ArrayList<>();
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(0);
@@ -198,7 +196,7 @@ public class ForumStatisticsTestSuite {
         @Test
         void testIf100Users() {
             //Given
-            ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+            ForumStatistics forumStatistics = new ForumStatistics();
             List<String> users = generateUsers(100);
             when(statisticsMock.usersNames()).thenReturn(users);
             when(statisticsMock.postsCount()).thenReturn(generatePosts(500));
