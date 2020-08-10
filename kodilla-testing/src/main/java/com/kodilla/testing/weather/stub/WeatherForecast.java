@@ -31,16 +31,16 @@ public class WeatherForecast {
     public double calculateMiddleValue() {
         double value = 0.0;
         List<Double> tempList = new ArrayList<>();
-        for (Map.Entry<String,Double> eachSensor : temperatures.getTemperatures().entrySet()) {
+        for (Map.Entry<String, Double> eachSensor : temperatures.getTemperatures().entrySet()) {
             tempList.add(eachSensor.getValue());
         }
         Collections.sort(tempList);
         if (tempList.size() % 2 == 0) {
-                double value1 = tempList.get(tempList.size() / 2 - 1);
-                double value2 = tempList.get(tempList.size() / 2);
-                double middleValue = (value1 + value2) / 2;
-                return middleValue;
-            }else {
+            double value1 = tempList.get(tempList.size() / 2 - 1);
+            double value2 = tempList.get(tempList.size() / 2);
+            double middleValue = (value1 + value2) / 2;
+            return middleValue;
+        } else {
             value = tempList.get(tempList.size() / 2);
         }
         return value;

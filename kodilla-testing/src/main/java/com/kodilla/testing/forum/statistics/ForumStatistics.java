@@ -20,34 +20,20 @@ public class ForumStatistics {
         System.out.println("Calculating average of comments per one user ...");
         if (userQuantity != 0 && commentsQuantity != 0) {
             setAverageCommentsPerUser(commentsQuantity / userQuantity);
-        }else {
-            if (userQuantity == 0) {
-                System.out.println("There are no any users!");
-            }
-            if (commentsQuantity == 0) {
-                System.out.println("There are no any comments!");
-            }
         }
         System.out.println("Calculating average of comments per one post ...");
         if (postQuantity != 0 && commentsQuantity != 0) {
             setAverageCommentsPerPost(commentsQuantity / postQuantity);
-        }else {
-            if (postQuantity == 0) {
-                System.out.println("There are no any posts!");
-            }
-            if (commentsQuantity == 0) {
-                System.out.println("There are no any comments!");
-            }
         }
     }
 
     public void showStatistics() {
-            System.out.println("User quantity: " + (int)userQuantity);
-            System.out.println("Post quantity: " + (int)postQuantity);
-            System.out.println("Comments quantity: " + (int)commentsQuantity);
-            System.out.println("Average of posts per one user: " + averagePostPerUser);
-            System.out.println("Average of comments per one user: " + averageCommentsPerUser);
-            System.out.println("Average of comments per one post: " + averageCommentsPerPost + "\n");
+        System.out.println("User quantity: " + (int) userQuantity);
+        System.out.println("Post quantity: " + (int) postQuantity);
+        System.out.println("Comments quantity: " + (int) commentsQuantity);
+        System.out.println("Average of posts per one user: " + averagePostPerUser);
+        System.out.println("Average of comments per one user: " + averageCommentsPerUser);
+        System.out.println("Average of comments per one post: " + averageCommentsPerPost + "\n");
     }
 
     public double getUserQuantity() {
@@ -97,4 +83,5 @@ public class ForumStatistics {
     public void setAverageCommentsPerPost(double averageCommentsPerPost) {
         this.averageCommentsPerPost = averageCommentsPerPost;
     }
+
 }

@@ -99,7 +99,6 @@ public class ForumStatisticsTestSuite {
             forumStatistics.showStatistics();
 
             //Then
-            Assertions.assertEquals(50, forumStatistics.getUserQuantity());
             Assertions.assertEquals(1000, forumStatistics.getPostQuantity());
             Assertions.assertEquals(25000, forumStatistics.getCommentsQuantity());
             Assertions.assertEquals(20, forumStatistics.getAveragePostPerUser());
@@ -121,10 +120,7 @@ public class ForumStatisticsTestSuite {
             forumStatistics.showStatistics();
 
             //Then
-            Assertions.assertEquals(50, forumStatistics.getUserQuantity());
-            Assertions.assertEquals(1000, forumStatistics.getPostQuantity());
             Assertions.assertEquals(0, forumStatistics.getCommentsQuantity());
-            Assertions.assertEquals(20, forumStatistics.getAveragePostPerUser());
             Assertions.assertEquals(0, forumStatistics.getAverageCommentsPerUser());
             Assertions.assertEquals(0, forumStatistics.getAverageCommentsPerPost());
         }
@@ -143,8 +139,6 @@ public class ForumStatisticsTestSuite {
             forumStatistics.showStatistics();
 
             //Then
-            Assertions.assertEquals(50, forumStatistics.getUserQuantity());
-            Assertions.assertEquals(1000, forumStatistics.getPostQuantity());
             Assertions.assertEquals(700, forumStatistics.getCommentsQuantity());
             Assertions.assertEquals(20, forumStatistics.getAveragePostPerUser());
             Assertions.assertEquals(14, forumStatistics.getAverageCommentsPerUser());
@@ -165,9 +159,8 @@ public class ForumStatisticsTestSuite {
             forumStatistics.showStatistics();
 
             //Then
-            Assertions.assertEquals(700, forumStatistics.getCommentsQuantity());
+            Assertions.assertEquals(500, forumStatistics.getPostQuantity());
             Assertions.assertEquals(10, forumStatistics.getAveragePostPerUser());
-            Assertions.assertEquals(14, forumStatistics.getAverageCommentsPerUser());
             Assertions.assertEquals(1.4, forumStatistics.getAverageCommentsPerPost());
         }
 
@@ -208,10 +201,7 @@ public class ForumStatisticsTestSuite {
 
             //Then
             Assertions.assertEquals(100, forumStatistics.getUserQuantity());
-            Assertions.assertEquals(500, forumStatistics.getPostQuantity());
-            Assertions.assertEquals(700, forumStatistics.getCommentsQuantity());
             Assertions.assertEquals(5, forumStatistics.getAveragePostPerUser());
             Assertions.assertEquals(7, forumStatistics.getAverageCommentsPerUser());
-            Assertions.assertEquals(1.4, forumStatistics.getAverageCommentsPerPost());
         }
 }
