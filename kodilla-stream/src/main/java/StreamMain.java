@@ -1,41 +1,55 @@
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.beautifier.PoemDecorator;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.*;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
 
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        //Task 7.3
+        Forum forum = new Forum();
+        Map<Integer, ForumUser> usersMap = forum.getUserList().stream()
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> user.getDateOfBirth().getYear() <= 2000)
+                .filter(user -> user.getPostQuantity() >= 1)
+                .collect(Collectors.toMap(ForumUser::getUserId, user -> user));
 
-        System.out.println("Calculating with lambda");
+        usersMap.entrySet().stream()
+                .map(eachEntry -> eachEntry.getKey() + ": " + eachEntry.getValue())
+                .forEach(System.out::println);
+        System.out.println(" ");
 
-        expressionExecutor.executeExpression(10, 5, Double::sum);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
+        // Collectors.toList()
+        //BookDirectory theBookDirectory = new BookDirectory();
+        //List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
+        //        .filter(book -> book.getYearOfPublication() > 2005)
+        //        .collect(Collectors.toList());
 
-        System.out.println("Calculating with method reference");
+        //System.out.println("# elements: " + theResultListOfBooks.size());
+        //theResultListOfBooks.stream()
+        //        .forEach(System.out::println);
 
-        expressionExecutor.executeExpression(10, 5, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(10, 5, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(10, 5, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(10, 5, FunctionalCalculator::divideAByB);
+        // Collectors.toMap()
+        //Map<String, Book> theResultMapOfBooks = theBookDirectory.getList().stream()
+        //        .filter(book -> book.getYearOfPublication() > 2005)
+        //        .collect(Collectors.toMap(Book::getSignature, book -> book));
 
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        //System.out.println("\n# elements: " + theResultMapOfBooks.size());
+        //theResultMapOfBooks.entrySet().stream()
+        //        .map(entry -> entry.getKey() + ": " + entry.getValue())
+        //        .forEach(System.out::println);
+        //System.out.println(" ");
 
-        poemBeautifier.beautify("\nexample text", String::toUpperCase);
-        poemBeautifier.beautify("example text", (text) -> text.replace(" ","_"));
-        poemBeautifier.beautify("example text", new PoemDecorator() {
-            @Override
-            public String decorate(String text) {
-                return text.replaceAll("example text", "ExampleText");
-            }
-        });
+        // Collectors.joining()
+        //String theResultStringOfBooks = theBookDirectory.getList().stream()
+        //        .filter(book -> book.getYearOfPublication() > 2005)
+        //        .map(Book::toString)
+        //        .collect(Collectors.joining(",\n","<<",">>"));
 
-        System.out.println("\nUsing Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
-
+        //System.out.println(theResultStringOfBooks);
     }
 }
