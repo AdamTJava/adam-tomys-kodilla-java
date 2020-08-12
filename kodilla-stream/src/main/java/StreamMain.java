@@ -1,3 +1,4 @@
+import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
@@ -9,6 +10,14 @@ import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
+
+        //Task 7.1
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        poemBeautifier.beautify("example text", String::toUpperCase);
+        poemBeautifier.beautify("example text", text -> text.replace(" ", "_"));
+        poemBeautifier.beautify("example text", text -> text.replaceAll("example text", "ExampleText"));
+
+        System.out.println(" ");
 
         //Task 7.3
         Forum forum = new Forum();
