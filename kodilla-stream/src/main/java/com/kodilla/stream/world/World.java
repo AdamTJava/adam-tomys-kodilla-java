@@ -15,6 +15,7 @@ public class World {
     public BigDecimal getPeopleQuantity() {
 
         BigDecimal allPeople = continentList.stream()
+                //.filter(continent -> continent.getContinentName() == "Europe") - policzenie liczby ludności tylko dla Europy
                 .flatMap(continent -> continent.getListOfCountries().stream())
                 .map(Country::getPeopleQuantity)
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
