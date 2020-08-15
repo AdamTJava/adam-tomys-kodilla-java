@@ -8,11 +8,11 @@ public class ArrayOperationsTestSuite {
     @Test
     void testGetAverage() {
         //Given
-        int[] numbers = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] numbers = new int[]{3, 5, 4};
 
         //When
         double actualAverage = ArrayOperations.getAverage(numbers);
-        double expectedAverage = 5.5;
+        double expectedAverage = 4.0;
 
         //Then
         Assertions.assertEquals(expectedAverage, actualAverage);
