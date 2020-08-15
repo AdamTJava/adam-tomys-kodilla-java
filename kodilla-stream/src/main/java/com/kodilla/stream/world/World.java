@@ -13,28 +13,12 @@ public class World {
     }
 
     public BigDecimal getPeopleQuantity() {
-        BigDecimal allPeople = BigDecimal.ZERO;;
 
-        BigDecimal europeanPopulation = continentList.stream()
-                .flatMap(continent -> continent.getEuropeanCountries().stream())
+        BigDecimal allPeople = continentList.stream()
+                .flatMap(continent -> continent.getListOfCountries().stream())
                 .map(Country::getPeopleQuantity)
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
 
-        BigDecimal africanPopulation = continentList.stream()
-                .flatMap(continent -> continent.getAfricanCountries().stream())
-                .map(Country::getPeopleQuantity)
-                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
-
-        BigDecimal asianPopulation = continentList.stream()
-                .flatMap(continent -> continent.getAsianCountries().stream())
-                .map(Country::getPeopleQuantity)
-                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
-
-        allPeople = allPeople.add(europeanPopulation);
-        allPeople = allPeople.add(africanPopulation);
-        allPeople = allPeople.add(asianPopulation);
-
-        System.out.println(allPeople);
         return allPeople;
     }
 }

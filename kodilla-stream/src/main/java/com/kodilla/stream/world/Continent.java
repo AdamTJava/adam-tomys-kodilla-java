@@ -5,32 +5,18 @@ import java.util.List;
 
 public class Continent {
 
-    private final List<Country> europeanCountries = new ArrayList<>();
-    private final List<Country> africanCountries = new ArrayList<>();
-    private final List<Country> asianCountries = new ArrayList<>();
+    private final String continentName;
+    private final List<Country> listOfCountries = new ArrayList<>();
 
-    public List<Country> getEuropeanCountries() {
-        return europeanCountries;
+    public Continent(String continentName) {
+        this.continentName = continentName;
     }
 
-    public List<Country> getAfricanCountries() {
-        return africanCountries;
+    public final void addToListOfCountries(Country country) {
+        listOfCountries.add(country);
     }
 
-    public List<Country> getAsianCountries() {
-        return asianCountries;
+    public List<Country> getListOfCountries() {
+        return listOfCountries;
     }
-
-    public final void addToEuropeanCountries(Country country) {
-        europeanCountries.add(country);
-    }
-
-    public final void addToAfricanCountries(Country country) {
-        africanCountries.add(country);
-    }
-
-    public final void addToAsianCountries(Country country) {
-        asianCountries.add(country);
-    }
-
 }

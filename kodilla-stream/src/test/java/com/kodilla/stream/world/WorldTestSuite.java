@@ -20,18 +20,18 @@ public class WorldTestSuite {
         Country japan = new Country("Japan", new BigDecimal("126000000"));
         Country china = new Country("China", new BigDecimal("1400000000"));
 
-        Continent europe = new Continent();
-        europe.addToEuropeanCountries(poland);
-        europe.addToEuropeanCountries(spain);
-        europe.addToEuropeanCountries(portugal);
-        Continent africa = new Continent();
-        africa.addToAfricanCountries(kenya);
-        africa.addToAfricanCountries(tanzania);
-        africa.addToAfricanCountries(maroko);
-        Continent asia = new Continent();
-        asia.addToAsianCountries(thailand);
-        asia.addToAsianCountries(japan);
-        asia.addToAsianCountries(china);
+        Continent europe = new Continent("Europe");
+        europe.addToListOfCountries(poland);
+        europe.addToListOfCountries(spain);
+        europe.addToListOfCountries(portugal);
+        Continent africa = new Continent("Africa");
+        africa.addToListOfCountries(kenya);
+        africa.addToListOfCountries(tanzania);
+        africa.addToListOfCountries(maroko);
+        Continent asia = new Continent("Asia");
+        asia.addToListOfCountries(thailand);
+        asia.addToListOfCountries(japan);
+        asia.addToListOfCountries(china);
 
         World world = new World();
         world.addContinent(europe);
