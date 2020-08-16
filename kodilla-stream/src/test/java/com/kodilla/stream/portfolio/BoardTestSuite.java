@@ -8,10 +8,8 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.averagingDouble;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -103,6 +101,7 @@ public class BoardTestSuite {
         System.out.println(average);
 
         //Then
+        Assertions.assertEquals(3, tasksPeriodDays.size());
         Assertions.assertEquals(10.0, average);
 
     }
