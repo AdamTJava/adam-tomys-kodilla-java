@@ -19,9 +19,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                '}';
+        return username;
     }
 
     @Override

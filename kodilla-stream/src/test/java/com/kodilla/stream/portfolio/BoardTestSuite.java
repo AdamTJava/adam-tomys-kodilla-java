@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,17 +29,18 @@ public class BoardTestSuite {
     void testAddTaskListFindUsersTasks() {
         //Given
         Board project = prepareTestData();
+
         //When
-        User user = new User("developer1", "John Smith");
         List<Task> tasks = project.getTaskLists().stream()
                 .flatMap(l -> l.getTasks().stream())
-                .filter(t -> t.getAssignedUser().equals(user))
+                .filter(t -> t.getAssignedUser().getUsername().equals("developer1"))
                 .collect(toList());
 
         //Then
         assertEquals(2, tasks.size());
-        assertEquals(user, tasks.get(0).getAssignedUser());
-        assertEquals(user, tasks.get(1).getAssignedUser());
+        assertEquals("developer1", tasks.get(0).getAssignedUser().getUsername());
+        assertEquals("developer1", tasks.get(1).getAssignedUser().getUsername());
+        assertEquals("John Smith", tasks.get(1).getAssignedUser().getRealName());
     }
 
     @Test
@@ -48,11 +49,8 @@ public class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList> undoneTasks = new ArrayList<>();
-        undoneTasks.add(new TaskList("To do"));
-        undoneTasks.add(new TaskList("In progress"));
         List<Task> tasks = project.getTaskLists().stream()
-                .filter(undoneTasks::contains)
+                .filter(tl -> tl.getName().equals("To do") || tl.getName().equals("In progress"))
                 .flatMap(tl -> tl.getTasks().stream())
                 .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
                 .collect(toList());
@@ -69,10 +67,8 @@ public class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
         long longTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
+                .filter(tl -> tl.getName().equals("In progress"))
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(Task::getCreated)
                 .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
@@ -86,23 +82,22 @@ public class BoardTestSuite {
     void addTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
 
         //When
-        List<Integer> tasksPeriodDays = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
+        double average = project.getTaskLists().stream()
+                .filter(tl -> tl.getName().equals("In progress"))
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .map(task -> Period.between(task.getCreated(), LocalDate.now()).getDays())
-                .collect(toList());
-        Arrays.sort(new List[]{tasksPeriodDays});
-        System.out.println(tasksPeriodDays);
-        double average = IntStream.rangeClosed(tasksPeriodDays.get(0), tasksPeriodDays.get(tasksPeriodDays.size() - 1)).average().getAsDouble();
-        System.out.println(average);
+                .map(task -> DAYS.between(task.getCreated(), LocalDate.now()))
+                .mapToInt(Long::intValue).average().getAsDouble();
+                //.collect(toList());
+        //Arrays.sort(new List[]{tasksPeriodDays});
+        //System.out.println(tasksPeriodDays);
+        //double average = IntStream.rangeClosed(tasksPeriodDays.get(0), tasksPeriodDays.get(tasksPeriodDays.size() - 1)).average().getAsDouble();
+        //System.out.println(average);
 
         //Then
-        Assertions.assertEquals(3, tasksPeriodDays.size());
-        Assertions.assertEquals(10.0, average);
+        //assertEquals(3, tasksPeriodDays.size());
+        assertEquals(10.0, average);
 
     }
 

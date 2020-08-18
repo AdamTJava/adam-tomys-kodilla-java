@@ -6,10 +6,11 @@ import java.util.List;
 public class Continent {
 
     private final String continentName;
-    private final List<Country> listOfCountries = new ArrayList<>();
+    private final List<Country> listOfCountries;
 
     public Continent(String continentName) {
         this.continentName = continentName;
+        this.listOfCountries = new ArrayList<>();
     }
 
     public String getContinentName() {
