@@ -1,6 +1,5 @@
-package com.kodilla.exception.secondchallenge;
+package com.kodilla.exception.test;
 
-import com.kodilla.exception.test.SecondChallenge;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
