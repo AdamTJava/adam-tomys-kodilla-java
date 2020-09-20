@@ -8,10 +8,10 @@ public class IndexExceptionRunner {
         VideoCollector videoCollector = new VideoCollector();
         List<String> collection = videoCollector.getCollection();
 
-        if (collection.size() > 1) {
             String movie = collection.get(0);
             System.out.println(movie);
 
+        if (collection.size() > 1) {
             String movie2 = collection.get(1);
             System.out.println(movie2);
         }

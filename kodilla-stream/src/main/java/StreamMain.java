@@ -1,6 +1,4 @@
 import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.book.Book;
-import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 
@@ -60,7 +58,7 @@ public class StreamMain {
         //        .filter(book -> book.getYearOfPublication() > 2005)
         //        .map(Book::toString)
         //        .collect(Collectors.joining(",\n","<<",">>"));
-
+//
         //System.out.println(theResultStringOfBooks);
     }
 }
