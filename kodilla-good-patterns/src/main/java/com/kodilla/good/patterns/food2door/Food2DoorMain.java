@@ -15,7 +15,11 @@ public class Food2DoorMain {
 
         ExampleOrderRequest exampleOrderRequest = new ExampleOrderRequest();
         exampleOrderRequest.addToShoppingCard(supplier1ProductList.get(0), 2);
+
+        ExampleOrderRequest exampleOrderRequest1 = new ExampleOrderRequest();
         exampleOrderRequest.addToShoppingCard(supplier2ProductList.get(0), 3);
+
+        ExampleOrderRequest exampleOrderRequest2 = new ExampleOrderRequest();
         exampleOrderRequest.addToShoppingCard(supplier3ProductList.get(0), 4);
 
         OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShopOrderService());
@@ -23,8 +27,8 @@ public class Food2DoorMain {
         OrderProcessor orderProcessor3 = new OrderProcessor(new GlutenFreeShopOrderService());
 
         orderProcessor.execute(exampleOrderRequest);
-        orderProcessor2.execute(exampleOrderRequest);
-        orderProcessor3.execute(exampleOrderRequest);
+        orderProcessor2.execute(exampleOrderRequest1);
+        orderProcessor3.execute(exampleOrderRequest2);
 
     }
 }
