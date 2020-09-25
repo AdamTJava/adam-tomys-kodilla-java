@@ -5,12 +5,31 @@ import java.util.List;
 
 public class ExtraFoodShopSupplier implements Supplier{
 
-    private final String name = "ExtraFoodShop";
+    private final String name;
+    private List<Product> productList = new ArrayList<>();
+
+    public ExtraFoodShopSupplier(String name) {
+        this.name = name;
+        createProductList();
+    }
 
     public List<Product> createProductList() {
-        List<Product> productList = new ArrayList<>();
-        productList.add(new Product(new ExtraFoodShopSupplier(), "Vegetables", "Tomato", 100, "kg", 5.99, "PLN"));
+        productList.add(new Product(  "Tomato", 100, "kg", 5.99, "PLN"));
+        productList.add(new Product(  "Potato", 100, "kg", 3.99, "PLN"));
+        productList.add(new Product(  "Lettuce", 100, "pieces", 5.99, "PLN"));
         return productList;
+    }
+
+    public void process() {
+        System.out.println("Processing order");
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

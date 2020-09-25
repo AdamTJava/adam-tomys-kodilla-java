@@ -7,35 +7,23 @@ public class ExampleOrderRequest {
     private final Client client;
     private final int orderNumber;
     private Map<Double, Product> shoppingCard;
-    private double orderValue;
-    private String orderCurrency;
     Random random = new Random();
 
     public ExampleOrderRequest() {
         this.client = new Client("Adam", "Tomys", "adamtomys@gmail.com", "Bojarskiego 9/4, 41-503 Chorzów");
         this.orderNumber = random.nextInt(1000) + 1;
         this.shoppingCard = new HashMap<>();
-        this.orderValue = 0;
+        ExtraFoodShopSupplier extraFoodShop = new ExtraFoodShopSupplier("ExtraFoodShop");
+        HealthyShopSupplier healthyShop = new HealthyShopSupplier("HealthyShop");
+        addToShoppingCard(extraFoodShop.getProductList().get(0), 3);
+        addToShoppingCard(extraFoodShop.getProductList().get(1), 2);
+        addToShoppingCard(healthyShop.getProductList().get(0), 5);
+        addToShoppingCard(healthyShop.getProductList().get(2), 2);
+
     }
 
     public void addToShoppingCard(Product product, double productQuantity) {
-        if (productQuantity <= product.getAvailableQuantity()) {
             shoppingCard.put(productQuantity, product);
-            orderValue = orderValue + (productQuantity * product.getPrice());
-            orderCurrency = product.getCurrency();
-            System.out.println("Product: " + product.getName() + " from supplier: " + product.getSupplier() +
-                    " has been added to shopping card. Quantity: " + productQuantity);
-        } else {
-            System.out.println("Not enough selected product in stock !");
-        }
-    }
-
-    public String getOrderCurrency() {
-        return orderCurrency;
-    }
-
-    public double getOrderValue() {
-        return orderValue;
     }
 
     public Client getClient() {
@@ -44,6 +32,10 @@ public class ExampleOrderRequest {
 
     public int getOrderNumber() {
         return orderNumber;
+    }
+
+    public Map<Double, Product> getShoppingCard() {
+        return shoppingCard;
     }
 
     @Override

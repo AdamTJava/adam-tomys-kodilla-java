@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Supplier {
 
-    List<Product> createProductList();
+    void process();
 
 }
