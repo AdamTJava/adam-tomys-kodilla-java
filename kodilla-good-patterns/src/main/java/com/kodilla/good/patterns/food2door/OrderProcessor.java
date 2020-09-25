@@ -9,7 +9,7 @@ public class OrderProcessor {
     }
 
     public void execute(ExampleOrderRequest order) {
-        supplier.process();
+        supplier.process(order);
     }
 
 }

@@ -5,8 +5,8 @@ public class Food2DoorMain {
 
         ExampleOrderRequest orderRequest = new ExampleOrderRequest();
 
-        OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShopSupplier("ExtraFoodShop"));
-        OrderProcessor orderProcessor1 = new OrderProcessor(new HealthyShopSupplier("HealthyShop"));
+        OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShopSupplier());
+        OrderProcessor orderProcessor1 = new OrderProcessor(new HealthyShopSupplier());
 
         orderProcessor.execute(orderRequest);
         orderProcessor1.execute(orderRequest);

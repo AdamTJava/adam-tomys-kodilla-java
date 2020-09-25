@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Supplier {
 
-    void process();
+    void process(ExampleOrderRequest order);
 
 }
