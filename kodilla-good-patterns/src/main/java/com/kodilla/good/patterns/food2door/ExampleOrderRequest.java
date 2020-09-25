@@ -19,7 +19,7 @@ public class ExampleOrderRequest {
         System.out.println("Produkty sklepu HealthyShop: " + healthyShop.getProductList());
         addToShoppingCard(3, extraFoodShop.getProductList().get(0));
 
-        addToShoppingCard(4, extraFoodShop.getProductList().get(1)); // program jakby nie widziałe tej lini kodu - nie dodaje produktu do koszyka
+        addToShoppingCard(4, extraFoodShop.getProductList().get(1)); // program jakby nie widzi tej lini kodu - nie dodaje produktu do koszyka
         //chociaż wszystko jest dokładnie identycznie w przypadku obydwu dostawców. U drugiego dodaje wszystkie trzy produkty z listy, a u tego pierwszego tylko jeden.
         //niezależnie od tego, czy wpiszę w indexie 0,1, czy 2, po prostu nie działa. Widać to dobrze w system.out.princie. W debuggerze też nic nie widać.
         //Może dasz radę spojrzeć gdzie może być problem ? Przejrzałem wszystko kilka razy.
