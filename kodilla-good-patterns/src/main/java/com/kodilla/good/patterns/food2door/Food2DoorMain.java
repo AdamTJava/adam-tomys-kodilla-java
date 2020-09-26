@@ -5,11 +5,13 @@ public class Food2DoorMain {
 
         ExampleOrderRequest orderRequest = new ExampleOrderRequest();
 
-        OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShopSupplier());
-        OrderProcessor orderProcessor1 = new OrderProcessor(new HealthyShopSupplier());
+        OrderProcessor orderProcessor = new OrderProcessor(new ExtraFoodShop());
+        OrderProcessor orderProcessor1 = new OrderProcessor(new HealthyShop());
+        OrderProcessor orderProcessor2 = new OrderProcessor(new GlutenFreeShop());
 
         orderProcessor.execute(orderRequest);
         orderProcessor1.execute(orderRequest);
+        orderProcessor2.execute(orderRequest);
 
     }
 }

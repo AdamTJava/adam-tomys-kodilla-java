@@ -2,14 +2,14 @@ package com.kodilla.good.patterns.food2door;
 
 public class OrderProcessor {
 
-    private Supplier supplier;
+    private Shop shop;
 
-    public OrderProcessor(Supplier supplier) {
-        this.supplier = supplier;
+    public OrderProcessor(Shop shop) {
+        this.shop = shop;
     }
 
     public void execute(ExampleOrderRequest order) {
-        supplier.process(order);
+        shop.process(order);
     }
 
 }
