@@ -26,7 +26,10 @@ public class Client {
         return email;
     }
 
-    public String getAddress() {
-        return address;
+    @Override
+    public String toString() {
+        return name + ", " + surname + ", " + email + ", " + address;
     }
 }
+
+

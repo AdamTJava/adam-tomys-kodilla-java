@@ -15,6 +15,7 @@ public class GlutenFreeShop implements Shop {
     private final MailService mailService = new GlutenFreeMailService();
     private boolean isPrepared;
     private boolean isSent;
+    BigDecimal orderValue = new BigDecimal(0);
 
     public GlutenFreeShop() {
         createProductList();
@@ -43,6 +44,8 @@ public class GlutenFreeShop implements Shop {
                     mailService.sendOrderInDelivery(order);
                 }
             }
+        } else {
+            System.out.println("We are waiting for the payment. Order Value is: " + orderValue);
         }
 
     }
@@ -52,7 +55,6 @@ public class GlutenFreeShop implements Shop {
         GlutenFreeBankAccountOperation bankAccount = new GlutenFreeBankAccountOperation("income", 38.93, "Adam", "Tomys");
         bankAccount.addOperation(bankAccount);
 
-        BigDecimal orderValue = new BigDecimal(0);
         for (Map.Entry<Product, Double> entry : GlutenFreeShop.productsInOrder.entrySet()) {
             orderValue = orderValue.add((entry.getKey().getPrice()).multiply(BigDecimal.valueOf(entry.getValue())));
         }
@@ -82,9 +84,6 @@ public class GlutenFreeShop implements Shop {
         return productList;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public void setPrepared(boolean prepared) {
         isPrepared = prepared;
