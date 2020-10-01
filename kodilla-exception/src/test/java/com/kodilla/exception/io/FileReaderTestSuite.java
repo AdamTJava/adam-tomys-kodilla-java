@@ -20,7 +20,7 @@ class FileReaderTestSuite {
         FileReader fileReader = new FileReader();
         String fileName = "nie_ma_takiego_pliku.txt";
         // when & then
-        //assertThrows(FileReaderException.class, () -> fileReader.readFile(fileName));
+//        assertThrows(FileReaderException.class, () -> fileReader.readFile(fileName));
     }
 
     @Test
