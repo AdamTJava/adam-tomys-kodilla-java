@@ -1,14 +1,10 @@
 package com.kodilla.patterns.factory.tasks;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TaskFactory {
 
     public static final String PAINTING = "PAINTING";
     public static final String SHOPPING = "SHOPPING";
     public static final String DRIVING = "DRIVING";
-    public static List<Task> doneTasks = new ArrayList<>();
 
     public final Task createTask(String taskClass) {
         switch (taskClass) {

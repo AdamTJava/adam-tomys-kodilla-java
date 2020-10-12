@@ -21,4 +21,7 @@ public class SimpleInvoice {
                 .collect(Collectors.summingDouble(SimpleItem::getValue));
     }
 
+    public List<SimpleItem> getItems() {
+        return items;
+    }
 }

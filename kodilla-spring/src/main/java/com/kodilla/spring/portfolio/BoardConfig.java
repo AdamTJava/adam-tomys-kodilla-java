@@ -8,19 +8,24 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BoardConfig {
 
-    @Autowired
     @Qualifier("toDoList")
-    TaskList toDoList;
     @Autowired
-    @Qualifier("inProgressList")
-    TaskList inProgressList;
+    TaskList toDoListDifferentName; // musi być Qualifier, ponieważ pole toDoList z klasy Board ma inną nazwę niż to pole
+    // toDoListDifferentName - Spring nie potrafi tego dopasować sam i trzeba mu podać nazwę przez Qualifier. Dodatkowo jest
+    //@Autowired, ponieważ w klasie Board tego @Autowired nie ma.
+
+    TaskList inProgressList; // Tutaj nie trzeba nic - pole klasy Board jest identyczne jak tutaj w klasie konfiguracyjnej.
+    // Nie trzeba też @Autowired, bo jest dodane w klasie Board. Wystarczy w jednym miejscu, jest to zamienne. Najlepiej
+    //ujednolicać dla porządku.
+
     @Autowired
-    @Qualifier("doneList")
-    TaskList doneList;
+    TaskList doneList; // Tutaj nazwa pola jest ta sama, więc nie trzeba Qualifiera, ale nie ma w klasie Board adnotacji
+    // @Autowired, więc trzeba ją dodać tutaj. Gdzieś musi być, najlepiej wszystko w jednej klasie - albo konfiguracyjnej
+    // albo w roboczej
 
     @Bean(name = "board")
     public Board createBoard() {
-        return new Board(toDoList, inProgressList, doneList);
+        return new Board(toDoListDifferentName, inProgressList, doneList);
     }
 
     @Bean(name = "toDoList")

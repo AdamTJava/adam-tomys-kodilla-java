@@ -5,6 +5,7 @@ public class ShoppingTask implements Task {
     private String taskName;
     private String whatToBuy;
     private double quantity;
+    private boolean isDone = false;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -12,11 +13,14 @@ public class ShoppingTask implements Task {
         this.quantity = quantity;
     }
 
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
     @Override
     public void executeTask() {
         System.out.println("Buying " + quantity + " " + whatToBuy);
-        TaskFactory factory = new TaskFactory();
-        TaskFactory.doneTasks.add(factory.createTask(TaskFactory.SHOPPING));
+        setDone(true);
     }
 
     @Override
@@ -26,10 +30,8 @@ public class ShoppingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        for (int i = 0; i < TaskFactory.doneTasks.size() - 1; i++) {
-            if (TaskFactory.doneTasks.get(i).getTaskName().equals("Shopping")) {
-                return true;
-            }
+        if (isDone) {
+            return true;
         }
         return false;
     }

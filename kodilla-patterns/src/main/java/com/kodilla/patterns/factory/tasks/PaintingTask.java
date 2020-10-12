@@ -7,6 +7,7 @@ public class PaintingTask implements Task {
     private String taskName;
     private String color;
     private String whatToPaint;
+    private boolean isDone = false;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -14,11 +15,14 @@ public class PaintingTask implements Task {
         this.whatToPaint = whatToPaint;
     }
 
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
     @Override
     public void executeTask() {
         System.out.println("Painting " + whatToPaint + " in " + color + " color");
-        TaskFactory factory = new TaskFactory();
-        TaskFactory.doneTasks.add(factory.createTask(TaskFactory.PAINTING));
+        setDone(true);
     }
 
     @Override
@@ -28,10 +32,8 @@ public class PaintingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        for (int i = 0; i < TaskFactory.doneTasks.size() - 1; i++) {
-           if (TaskFactory.doneTasks.get(i).getTaskName().equals("Painting")) {
-               return true;
-           }
+        if (isDone) {
+            return true;
         }
         return false;
     }

@@ -5,6 +5,7 @@ public class DrivingTask implements Task {
     private String taskName;
     private String where;
     private String using;
+    private boolean isDone = false;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
@@ -12,11 +13,14 @@ public class DrivingTask implements Task {
         this.using = using;
     }
 
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
     @Override
     public void executeTask() {
         System.out.println("Driving to " + where + " by " + using);
-        TaskFactory factory = new TaskFactory();
-        TaskFactory.doneTasks.add(factory.createTask(TaskFactory.DRIVING));
+        setDone(true);
     }
 
     @Override
@@ -26,10 +30,8 @@ public class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        for (int i = 0; i < TaskFactory.doneTasks.size() - 1; i++) {
-            if (TaskFactory.doneTasks.get(i).getTaskName().equals("Driving")) {
-                return true;
-            }
+        if (isDone) {
+            return true;
         }
         return false;
     }

@@ -12,11 +12,11 @@ public class TaskFactoryTestSuite {
 
         //When
         Task painting = factory.createTask(TaskFactory.PAINTING);
+        assert painting != null;
         painting.executeTask();
 
         //Then
         Assertions.assertEquals("Painting", painting.getTaskName());
-        Assertions.assertEquals("Painting", TaskFactory.doneTasks.get(2).getTaskName());
 
     }
 
@@ -27,11 +27,11 @@ public class TaskFactoryTestSuite {
 
         //When
         Task driving = factory.createTask(TaskFactory.DRIVING);
+        assert driving != null;
         driving.executeTask();
 
         //Then
         Assertions.assertEquals("Driving", driving.getTaskName());
-        Assertions.assertEquals("Driving", TaskFactory.doneTasks.get(0).getTaskName());
     }
 
     @Test
@@ -41,11 +41,11 @@ public class TaskFactoryTestSuite {
 
         //When
         Task shopping = factory.createTask(TaskFactory.SHOPPING);
+        assert shopping != null;
         shopping.executeTask();
 
         //Then
         Assertions.assertEquals("Shopping", shopping.getTaskName());
-        Assertions.assertEquals("Shopping", TaskFactory.doneTasks.get(1).getTaskName());
     }
 
 }
