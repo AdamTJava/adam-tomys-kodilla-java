@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Transactional
 @SpringBootTest
 class CompanyDaoTestSuite {
     @Autowired
@@ -85,9 +87,14 @@ class CompanyDaoTestSuite {
         assertEquals(2, employeesWithLastnameTomys.size());
 
         //Clean up
-        employeeDao.deleteById(adamId);
-        employeeDao.deleteById(nataliaId);
-        employeeDao.deleteById(marcinId);
+        try {
+            employeeDao.deleteById(adamId);
+            employeeDao.deleteById(nataliaId);
+            employeeDao.deleteById(marcinId);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 
     @Test
@@ -115,9 +122,14 @@ class CompanyDaoTestSuite {
         assertEquals(1, companiesWithNameStartingByMic.size());
 
         //Clean up
-        companyDao.deleteById(microsoftId);
-        companyDao.deleteById(googleId);
-        companyDao.deleteById(dellId);
-        companyDao.deleteById(toshibaId);
+        try {
+            companyDao.deleteById(microsoftId);
+            companyDao.deleteById(googleId);
+            companyDao.deleteById(dellId);
+            companyDao.deleteById(toshibaId);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 }

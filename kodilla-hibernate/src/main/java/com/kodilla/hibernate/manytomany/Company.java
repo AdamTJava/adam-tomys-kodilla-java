@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
+@NamedQuery(
         name = "Company.retrieveCompaniesWithNameDefinedByFirstThreeLetters",
-        query = "SELECT * FROM COMPANIES WHERE substring(COMPANY_NAME, 1, 3) = :CONDITION"
+        query = "FROM Company WHERE substring(name, 1, 3) = :CONDITION"
 )
 
 @Entity

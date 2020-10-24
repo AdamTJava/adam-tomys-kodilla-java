@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
-@Transactional
+//@Transactional
 @SpringBootTest
 public class InvoiceDaoTestSuite {
 
@@ -39,6 +39,15 @@ public class InvoiceDaoTestSuite {
         Item position2 = new Item(new BigDecimal("5"), new BigDecimal("2.40"));
         Item position3 = new Item(new BigDecimal("3"), new BigDecimal("4.90"));
 
+        invoiceDao.save(invoice);
+        invoiceDao.save(invoice2);
+        itemDao.save(position1);
+        itemDao.save(position2);
+        itemDao.save(position3);
+        productDao.save(apple);
+        productDao.save(orange);
+        productDao.save(banana);
+
         invoice.getItems().add(position1);
         invoice.getItems().add(position2);
         invoice2.getItems().add(position3);
@@ -48,16 +57,14 @@ public class InvoiceDaoTestSuite {
         position3.setProduct(banana);
 
         //When
-        invoiceDao.save(invoice);
         int invoiceOneId = invoice.getId();
-        invoiceDao.save(invoice2);
-        int invoiceTwoId = invoice.getId();
+        int invoiceTwoId = invoice2.getId();
         int positionOneId = position1.getId();
-        int positionTwoId = position1.getId();
-        int positionThreeId = position1.getId();
+        int positionTwoId = position2.getId();
+        int positionThreeId = position3.getId();
         int appleId = position1.getId();
-        int orangeId = position1.getId();
-        int bananaId = position1.getId();
+        int orangeId = position2.getId();
+        int bananaId = position3.getId();
 
         //Then
         Assertions.assertNotEquals(0, invoiceOneId);

@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
-@Query(nativeQuery = true)
+@Query
     List<Company> retrieveCompaniesWithNameDefinedByFirstThreeLetters(@Param("CONDITION") String firstThreeLetters);
 
 }
