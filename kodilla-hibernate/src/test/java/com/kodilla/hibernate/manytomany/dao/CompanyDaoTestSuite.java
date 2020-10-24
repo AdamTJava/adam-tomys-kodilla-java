@@ -6,12 +6,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class CompanyDaoTestSuite {
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany(){
@@ -57,5 +61,63 @@ class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
+    }
+
+    @Test
+    void testEmployeeNamedQuery() {
+        //Given
+        Employee adam = new Employee("Adam", "Tomys");
+        Employee natalia = new Employee("Natalia", "Tomys");
+        Employee marcin = new Employee("Marcin", "Nowak");
+
+        employeeDao.save(adam);
+        int adamId = adam.getId();
+        employeeDao.save(natalia);
+        int nataliaId = natalia.getId();
+        employeeDao.save(marcin);
+        int marcinId = marcin.getId();
+
+        //When
+        List<Employee> employeesWithLastnameTomys = employeeDao.retrieveEmployeesWithLastname("Tomys");
+
+        //Then
+        System.out.println(employeesWithLastnameTomys);
+        assertEquals(2, employeesWithLastnameTomys.size());
+
+        //Clean up
+        employeeDao.deleteById(adamId);
+        employeeDao.deleteById(nataliaId);
+        employeeDao.deleteById(marcinId);
+    }
+
+    @Test
+    void testCompanyNamedQuery() {
+        //Given
+        Company microsoft = new Company("Microsoft");
+        Company google = new Company("Google");
+        Company dell = new Company("Dell");
+        Company toshiba = new Company("Toshiba");
+
+        companyDao.save(microsoft);
+        int microsoftId = microsoft.getId();
+        companyDao.save(google);
+        int googleId = google.getId();
+        companyDao.save(dell);
+        int dellId = dell.getId();
+        companyDao.save(toshiba);
+        int toshibaId = toshiba.getId();
+
+        //When
+        List<Company> companiesWithNameStartingByMic = companyDao.retrieveCompaniesWithNameDefinedByFirstThreeLetters("Mic");
+
+        //Then
+        System.out.println(companiesWithNameStartingByMic);
+        assertEquals(1, companiesWithNameStartingByMic.size());
+
+        //Clean up
+        companyDao.deleteById(microsoftId);
+        companyDao.deleteById(googleId);
+        companyDao.deleteById(dellId);
+        companyDao.deleteById(toshibaId);
     }
 }

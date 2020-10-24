@@ -19,12 +19,10 @@ public class Item {
     public Item() {
     }
 
-    public Item(BigDecimal quantity, BigDecimal value, Product product, Invoice invoice) {
+    public Item(BigDecimal quantity, BigDecimal value) {
         this.price = value.multiply(quantity);
         this.quantity = quantity;
         this.value = value;
-        this.product = product;
-        this.invoice = invoice;
     }
 
     @Id
@@ -53,7 +51,7 @@ public class Item {
         return value;
     }
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;

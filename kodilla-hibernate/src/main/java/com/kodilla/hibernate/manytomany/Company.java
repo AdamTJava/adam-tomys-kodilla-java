@@ -6,6 +6,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesWithNameDefinedByFirstThreeLetters",
+        query = "SELECT * FROM COMPANIES WHERE substring(COMPANY_NAME, 1, 3) = :CONDITION"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -49,5 +54,10 @@ public class Company {
 
     private void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
