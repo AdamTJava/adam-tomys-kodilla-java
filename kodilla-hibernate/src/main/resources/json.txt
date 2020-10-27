@@ -1,0 +1,24 @@
+{
+"carName": "passat",
+"carBrand": "volkswagen",
+"engineCapacity": "1998",
+"seats": [
+	"firstSeat": {
+		"material": "leather",
+		"color": "black",
+	},
+	"secondSeat": {
+		"material": "leather",
+		"color": "white",
+	},
+	"thirdSeat": {
+		"material": "leather",
+		"color": "red",
+	},
+	"fourthSeat": {
+		"material": "leather",
+		"color": "brown",
+	},
+    ]
+}
+	
