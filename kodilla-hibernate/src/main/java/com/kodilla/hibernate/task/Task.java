@@ -77,7 +77,7 @@ public class Task {
         return taskFinancialDetails;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "TASKLIST_ID")
     public TaskList getTaskList() {
         return taskList;
@@ -107,3 +107,11 @@ public class Task {
         this.taskList = taskList;
     }
 }
+
+//OneToOne
+
+//ManyToOne
+
+//OneToMany
+
+//ManyToMany

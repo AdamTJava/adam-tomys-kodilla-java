@@ -20,8 +20,7 @@ public class BoardConfig {
 
     @Autowired
     TaskList doneList; // Tutaj nazwa pola jest ta sama, więc nie trzeba Qualifiera, ale nie ma w klasie Board adnotacji
-    // @Autowired, więc trzeba ją dodać tutaj. Gdzieś musi być, najlepiej wszystko w jednej klasie - albo konfiguracyjnej
-    // albo w roboczej
+    // @Autowired, więc trzeba ją dodać tutaj. Gdzieś musi być, najlepiej wszystko w jednej klasie - konfiguracyjnej
 
     @Bean(name = "board")
     public Board createBoard() {

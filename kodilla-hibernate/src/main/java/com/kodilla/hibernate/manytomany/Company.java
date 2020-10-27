@@ -6,10 +6,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
+@NamedNativeQuery(
         name = "Company.retrieveCompaniesWithNameDefinedByFirstThreeLetters",
-        query = "FROM Company WHERE substring(name, 1, 3) = :CONDITION"
+        query = "SELECT * FROM COMPANIES WHERE substring(COMPANY_NAME, 1, 3) = :CONDITION",
+        resultClass = Company.class
 )
+// WAŻNE: PRZY NATIVE MUSZĄ BYĆ NAZWY KOLUMN, A W NORMALNYM QUERY NAZWY ENCJI !!
 
 @Entity
 @Table(name = "COMPANIES")

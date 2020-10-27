@@ -103,6 +103,7 @@ class TaskDaoTestSuite {
         task2.setTaskList(taskList);
         task3.setTaskList(taskList);
         task4.setTaskList(taskList);
+        //dlaczego trzeba to powielić, żeby zadziałało kaskadowe usuwanie rekordów ?
 
         taskListDao.save(taskList);
         int id = taskList.getId();

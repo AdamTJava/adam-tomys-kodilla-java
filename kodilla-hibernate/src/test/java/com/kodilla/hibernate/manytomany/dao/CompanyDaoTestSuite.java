@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Transactional
+//@Transactional
 @SpringBootTest
 class CompanyDaoTestSuite {
     @Autowired
@@ -96,7 +96,7 @@ class CompanyDaoTestSuite {
         }
 
     }
-
+//    @Transactional
     @Test
     void testCompanyNamedQuery() {
         //Given

@@ -40,11 +40,13 @@ public final class Pizza {
         this.ingredients = new ArrayList<>(ingredients);
     }
 
-    public Pizza(final String bottom, final String sauce, final String... ingredients) {
-        this.bottom = bottom;
-        this.sauce = sauce;
-        this.ingredients.addAll(Arrays.asList(ingredients));
-    }
+//    public Pizza(final String bottom, final String sauce, final String... ingredients) {
+//        this.bottom = bottom;
+//        this.sauce = sauce;
+//        this.ingredients.addAll(Arrays.asList(ingredients));
+//    }
+    // ten konstruktor nie jest używany w builderze, używa się go do ręcznego tworzenia pizzy z wymienianiem składników, zgodnie z
+    // final String... ingredients
 
     public String getBottom() {
         return bottom;
