@@ -3,22 +3,25 @@
 "carBrand": "volkswagen",
 "engineCapacity": "1998",
 "seats": [
-	"firstSeat": {
-		"material": "leather",
-		"color": "black",
-	},
-	"secondSeat": {
-		"material": "leather",
-		"color": "white",
-	},
-	"thirdSeat": {
-		"material": "leather",
-		"color": "red",
-	},
-	"fourthSeat": {
-		"material": "leather",
-		"color": "brown",
-	},
-    ]
+    {
+    "seatNumber": "1",
+    "material": "leather",
+    "color": "black"
+    },
+    {
+    "seatNumber": "2",
+    "material": "leather",
+    "color": "white"
+    },
+    {
+    "seatNumber": "3",
+    "material": "leather",
+    "color": "red" },
+    {
+    "seatNumber": "4",
+    "material": "leather",
+    "color": "grey"
+    },
+  ]
 }
 	
