@@ -8,7 +8,7 @@ public class VideoCollector {
     public List<String> getCollection() {
         List<String> videos = new ArrayList<>();
         videos.add("Movie");
-        return videos;
+        return videos;//test
     }
 
 }
