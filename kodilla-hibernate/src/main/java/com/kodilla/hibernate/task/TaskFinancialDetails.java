@@ -11,6 +11,7 @@ public class TaskFinancialDetails {
     private int id;
     private BigDecimal price;
     private boolean paid;
+    private Task task;
 
     public TaskFinancialDetails() {
     }
@@ -36,6 +37,16 @@ public class TaskFinancialDetails {
     @Column(name = "PAID")
     public boolean isPaid() {
         return paid;
+    }
+
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "TASK_ID")
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     private void setId(int id) {
