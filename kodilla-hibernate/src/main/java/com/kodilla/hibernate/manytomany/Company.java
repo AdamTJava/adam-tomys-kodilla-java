@@ -11,6 +11,11 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE substring(COMPANY_NAME, 1, 3) = :CONDITION",
         resultClass = Company.class
 )
+
+@NamedQuery(
+        name = "Company.retrieveCompaniesWithNameContainsGivenLetters",
+        query = "FROM Company WHERE name LIKE Concat('%', :LETTERS, '%')"
+)
 // WAŻNE: PRZY NATIVE MUSZĄ BYĆ NAZWY KOLUMN, A W NORMALNYM QUERY NAZWY ENCJI !!
 
 @Entity
