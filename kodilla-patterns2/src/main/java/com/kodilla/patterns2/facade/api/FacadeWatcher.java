@@ -13,9 +13,8 @@ public class FacadeWatcher {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(com.kodilla.patterns2.aop.calculator.Watcher.class);
 
-    @After("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..)) && args(number)")
-    public void logEvent(long number) {
-        LOGGER.info("Class: " + ", Args: " + ", " + number);
+    @After("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..)) &&" + "args(order, userId)")
+    public void logEvent(OrderDto order, Long userId) {
+        LOGGER.info("Order: " + order + "\nUser ID: " + userId);
     }
-
 }
