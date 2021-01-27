@@ -39,22 +39,33 @@ public class InvoiceDaoTestSuite {
         Item position2 = new Item(new BigDecimal("5"), new BigDecimal("2.40"));
         Item position3 = new Item(new BigDecimal("3"), new BigDecimal("4.90"));
 
-        invoiceDao.save(invoice);
-        invoiceDao.save(invoice2);
-        itemDao.save(position1);
-        itemDao.save(position2);
-        itemDao.save(position3);
-        productDao.save(apple);
-        productDao.save(orange);
-        productDao.save(banana);
+//        invoiceDao.save(invoice);
+//        invoiceDao.save(invoice2);
+//        itemDao.save(position1);
+//        itemDao.save(position2);
+//        itemDao.save(position3);
+//        productDao.save(apple);
+//        productDao.save(orange);
+//        productDao.save(banana);
 
         invoice.getItems().add(position1);
         invoice.getItems().add(position2);
         invoice2.getItems().add(position3);
 
+        position1.setInvoice(invoice);
+        position2.setInvoice(invoice);
+        position3.setInvoice(invoice2);
+
         position1.setProduct(apple);
         position2.setProduct(orange);
         position3.setProduct(banana);
+
+        apple.getItems().add(position1);
+        orange.getItems().add(position2);
+        banana.getItems().add(position3);
+
+        invoiceDao.save(invoice);
+        invoiceDao.save(invoice2);
 
         //When
         int invoiceOneId = invoice.getId();
@@ -77,12 +88,12 @@ public class InvoiceDaoTestSuite {
         Assertions.assertNotEquals(0, bananaId);
 
         //Clean up
-        try {
-            invoiceDao.deleteById(invoiceOneId);
-            invoiceDao.deleteById(invoiceTwoId);
-        } catch (Exception e) {
-            //do nothing
-        }
+//        try {
+//            invoiceDao.deleteById(invoiceOneId);
+//            invoiceDao.deleteById(invoiceTwoId);
+//        } catch (Exception e) {
+//            //do nothing
+//        }
     }
 
 }

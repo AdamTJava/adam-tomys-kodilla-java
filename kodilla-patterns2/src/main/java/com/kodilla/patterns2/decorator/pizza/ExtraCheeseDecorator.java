@@ -1,7 +1,9 @@
 package com.kodilla.patterns2.decorator.pizza;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExtraCheeseDecorator extends AbstractPizzaDecorator {
 

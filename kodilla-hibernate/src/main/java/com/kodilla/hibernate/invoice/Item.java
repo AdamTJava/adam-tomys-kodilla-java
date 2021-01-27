@@ -86,4 +86,9 @@ public class Item {
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(product);
+    }
 }

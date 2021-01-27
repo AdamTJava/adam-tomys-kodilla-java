@@ -93,6 +93,11 @@ class TaskDaoTestSuite {
         task3.setTaskFinancialDetails(tfd3);
         task4.setTaskFinancialDetails(tfd4);
 
+        tfd1.setTask(task1);
+        tfd2.setTask(task2);
+        tfd3.setTask(task3);
+        tfd4.setTask(task4);
+
         TaskList taskList = new TaskList("TODO", "ToDo tasks");
         taskList.getTasks().add(task1);
         taskList.getTasks().add(task2);

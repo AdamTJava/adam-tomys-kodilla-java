@@ -13,14 +13,14 @@ import java.util.Random;
 public class ShopService {
     private final List<Order> orders = new ArrayList<>();
     @Autowired
-    private final Authenticator authenticator;
+    private Authenticator authenticator;
     @Autowired
-    private final ProductService productService;
+    private ProductService productService;
 
-    public ShopService(Authenticator authenticator, ProductService productService) {
-        this.authenticator = authenticator;
-        this.productService = productService;
-    }
+//    public ShopService(Authenticator authenticator, ProductService productService) {
+//        this.authenticator = authenticator;
+//        this.productService = productService;
+//    }
 
     public Long openOrder(Long userId) {
         if (authenticator.isAuthenticated(userId)) {
