@@ -22,7 +22,7 @@ public class CrudAppTestSuite {
 
     @AfterAll
     public static void cleanUp() {
-//        webDriver.close();
+        webDriver.close();
     }
 
     private String createCrudAppTestTask() throws InterruptedException {
